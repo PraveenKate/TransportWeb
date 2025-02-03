@@ -1,0 +1,1815 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parcel & Cargo Transport Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        html {
+            width: 100%;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            width: 100%;
+        }
+
+        header {
+            /* background-color: #ffffff; */
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(79, 56, 56, 0.598);
+            background-color: hsl(229, 17%, 32%);
+            padding: 2% 2%;
+            margin: .5%;
+        }
+
+        nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        nav a:hover {
+            color: orange;
+            font-size: 1.1rem;
+            transition: .31s;
+            transform: scale(110%);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .login-btn-wrapper {
+            margin-right: 2%;
+            position: relative;
+            width: min-content;
+        }
+
+        .login-btn-wrapper div {
+            width: 180%;
+            padding: 7% 0;
+            background-color: white;
+            z-index: -1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+        }
+
+        .login-btn {
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            background-color: #3198c7;
+            border-radius: 20px;
+            padding: 7% 17%;
+            z-index: 1;
+            position: relative;
+        }
+
+
+        .login-btn:hover {
+            background-color: #001f66;
+            color: white;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 50px 20px;
+            background-color: #eff3f8;
+        }
+
+        .hero-content {
+            max-width: 50%;
+        }
+
+        .hero-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #212121;
+        }
+
+        .hero-content p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff5a3c;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-button:hover {
+            background-color: #e6502f;
+        }
+
+        .hero-image,
+        .schedule-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .hero-image {
+            width: 40%;
+        }
+
+
+        .hero-image img {
+            width: 100%;
+
+            /* border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+
+        }
+
+        .schedule-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 50px 20px;
+            background-color: #ffffff;
+        }
+
+        .schedule-content {
+            max-width: 50%;
+        }
+
+        .schedule-content h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #212121;
+        }
+
+        .schedule-content p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .schedule-content .features {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .feature {
+            width: 45%;
+            margin: 10px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-circle {
+            width: 20px;
+            height: 20px;
+            background-color: #fde5df;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .feature span {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .schedule-image {
+            padding: 2%;
+        }
+
+        .schedule-image img {
+
+            width: 100%;
+            height: 120%;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .focus-section {
+            padding: 50px 20px;
+            background-color: #eff3f8;
+            text-align: center;
+        }
+
+        .focus-section h2 {
+            font-size: 2rem;
+            color: #212121;
+            margin-bottom: 20px;
+        }
+
+        .focus-cards {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .focus-card {
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            width: 20%;
+            text-align: left;
+        }
+
+        .focus-card h3 {
+            font-size: 1.5rem;
+            color: #212121;
+            margin-bottom: 10px;
+        }
+
+        .focus-card:hover h3 {
+            text-shadow: 1px 1px 2px #5a626b;
+            ;
+        }
+
+        .focus-card p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .focus-card img {
+            display: block;
+            width: 100%;
+            border-radius: 3%;
+        }
+
+        .focus-card:hover img {
+            transform: scale(110%);
+            box-shadow: 0 0 5px .2px black;
+            transition: .5s;
+
+        }
+
+        .focus-card:hover {
+            box-shadow: 0 0 5px .2px rgb(105, 105, 105);
+        }
+
+        .focus-card:hover,
+        .focus-card:hover p {
+            background-color: #f5f5f5;
+            color: rgb(48, 47, 47);
+        }
+
+        .footer {
+            background-color: hsl(227, 29%, 13%);
+            ;
+            color: #ffffff;
+            padding: 40px 30px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .footer-section h3,
+        .footer-section h4 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-section p,
+        .footer-section ul li {
+            font-size: 0.9rem;
+            color: #d1d5db;
+            padding-top: 7px;
+            padding-bottom: 7px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li a {
+
+            color: #d1d5db;
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .footer-section ul li a:hover {
+            color: #ffffff;
+        }
+
+        .footer-socials a {
+            font-size: 1.2rem;
+            margin: 0 5px;
+            color: #d1d5db;
+            transition: color 0.3s ease;
+        }
+
+        .footer-socials a:hover {
+            color: #ffffff;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 15px;
+            font-size: 0.8rem;
+            color: #d1d5db;
+            border-top: 1px solid #333333;
+            background-color: hsl(229, 17%, 19%);
+            ;
+        }
+
+        /* 
+        @media (max-width: 768px) {
+
+            .hero-content,
+            .schedule-content {
+                max-width: 100%;
+            }
+
+            .hero,
+            .schedule-section {
+                flex-direction: column;
+            }
+
+            .focus-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+        } */
+
+        .contact-form {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 1%;
+            padding-bottom: 2%;
+        }
+
+        .contact-form h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .contact-form p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            padding: 1%;
+        }
+
+        .form-group input {
+            flex: 1;
+            width: 20%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #4a90e2;
+            box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+        }
+
+        .form-control {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #4a90e2;
+            box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+        }
+
+        .submit-button {
+            background-color: #001f66;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .submit-button:hover {
+            background-color: #002a99;
+        }
+
+        .contact-footer {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #333;
+        }
+
+        .contact-footer span {
+            font-weight: bold;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        section * {
+            filter: blur(8px);
+            transition: filter 0.6s ease-in-out;
+
+        }
+
+        section.visible * {
+            filter: blur(0);
+        }
+
+        section,
+        .contact-form {
+            position: relative;
+        }
+
+        section::before,
+        .contact-form.before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.5);
+            filter: blur(8px);
+            z-index: -1;
+            transition: opacity 0.6s ease-in-out;
+        }
+
+        section.visible::before,
+        .contact-form.visible::before {
+            opacity: 0;
+        }
+
+        .blur-effect {
+            filter: blur(5px);
+            pointer-events: none;
+            transition: filter 0.3s ease-in-out;
+        }
+
+        .contactContainer {
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            background-color: #eff3f8;
+            align-items: center;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: #ffffff;
+        }
+
+        .slider-wrapper {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            margin: 0%;
+
+        }
+
+        .arrow {
+            height: 100%;
+            background: white;
+            border: none;
+            font-size: 2rem;
+            color: #007BFF;
+            cursor: pointer;
+            z-index: 2;
+            padding: 5px 10px;
+        }
+
+        .left-arrow {
+            position: absolute;
+            left: 0;
+        }
+
+        .right-arrow {
+            position: absolute;
+            right: 0;
+        }
+
+        .gallery-images {
+            padding: 2% 0;
+            padding-left: 6%;
+            display: flex;
+            transition: transform 0.3s ease-in-out;
+            width: 70%;
+        }
+
+        .gallery-img {
+            width: 28%;
+            margin: 0 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 5px .2px rgb(105, 105, 105);
+        }
+
+        .gallery-button {
+            text-align: center;
+        }
+
+        .more-btn {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .more-btn:hover {
+            background-color: #0056b3;
+        }
+
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            /* Distance from the bottom */
+            right: 20px;
+            /* Distance from the right */
+            z-index: 1000;
+            /* Ensure it appears above other elements */
+            text-decoration: none;
+        }
+
+        .whatsapp-icon {
+            width: 60px;
+            /* Adjust the size of the icon */
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Add a shadow for better visibility */
+            transition: transform 0.3s ease;
+            /* Add a hover animation */
+        }
+
+        .whatsapp-icon:hover {
+            transform: scale(1.1);
+            /* Slight zoom effect on hover */
+        }
+
+        /* Make the WhatsApp icon float */
+        .whatsapp-float {
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: translateY(-5px);
+            /* Slight movement up on hover for a floating effect */
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            text-decoration: none;
+            animation: floatUpDown 2s infinite ease-in-out;
+        }
+
+        @keyframes floatUpDown {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .whatsapp-icon {
+            width: 60px;
+            /* Adjust the size of the icon */
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-icon:hover {
+            transform: scale(1.1);
+            /* Slight zoom effect on hover */
+        }
+
+
+        .head {
+            background: linear-gradient(to bottom, #87ceeb, #d6f1ff);
+            padding: 1% 0;
+            color: hsl(229, 17%, 32%);
+            text-align: center;
+            box-shadow: 2px 2px 10px rgb(193, 239, 255);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* .logo div {
+font-size: 1.5rem;
+  font-weight: bold;
+  color: hsl(229, 17%, 32%);
+}
+
+.logo span {
+    margin-left: 17%;
+  display: block;
+  font-size: .9rem;
+  color: hsl(229, 17%, 32%);
+} */
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 20%;
+            margin-top: -1.5%;
+            margin-bottom: -1%;
+            margin-left: -1%;
+        }
+
+        .logo img {
+            width: 110%;
+
+        }
+
+        /* Social Media Icons */
+        .social {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .icon-wrapper {
+
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            padding: 10px;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .icon {
+            text-align: center;
+            font-size: 1.2rem;
+            color: hsl(229, 17%, 32%);
+        }
+
+        .icon-wrapper:hover {
+            background-color: hsl(229, 17%, 32%);
+        }
+
+        .icon-wrapper:hover .icon {
+            color: white;
+        }
+
+        /* @media (max-width: 768px) {
+            .logo h1 {
+                font-size: 2rem;
+            }
+
+            .icon-wrapper {
+                padding: 10px;
+            }
+
+            .icon {
+                font-size: 1.5rem;
+            }
+        } */
+
+
+
+        .our-clients {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #fff;
+        }
+
+        .our-clients h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .carousel-container {
+            padding: 2% 1%;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .carousel-track {
+            display: flex;
+            animation: scroll 5s linear infinite;
+        }
+
+        .carousel-item {
+            flex: 0 0 auto;
+            width: 15%;
+            margin-right: 20px;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .roundedButtons {
+            background-color: #fde5df;
+            color: #e85a3c;
+            padding: 5px 10px;
+            border-radius: 3px;
+            width: 30%;
+            font-size: 10px;
+            text-align: center;
+           
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+
+        @media screen and (min-width: 400px) and (max-width: 700px) {
+            html {
+                width: 100%;
+            }
+
+            /* Header adjustments */
+            header {
+                padding: 5% 2%;
+            }
+
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 10px;
+            }
+
+            .login-btn-wrapper {
+                margin-top: 10px;
+            }
+
+            /* Hero section adjustments */
+            .hero {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .hero-content {
+                max-width: 100%;
+                text-align: center;
+            }
+
+            .hero-image {
+                width: 100%;
+                margin-top: 20px;
+            }
+
+            /* Schedule section adjustments */
+            .schedule-section {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .schedule-content {
+                max-width: 100%;
+                text-align: center;
+            }
+
+            .schedule-image {
+                width: 100%;
+                margin-top: 20px;
+            }
+
+            /* Focus section adjustments */
+            .focus-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .focus-card {
+                width: 80%;
+                margin: 10px 0;
+            }
+
+            /* Gallery adjustments */
+            .gallery-images {
+                width: 100%;
+                padding-left: 0;
+            }
+
+            .gallery-img {
+                width: 45%;
+                margin: 0 5px;
+            }
+
+            /* Contact form adjustments */
+            .contactContainer {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .mapContainer {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+
+            .contact-form {
+                width: 90%;
+            }
+
+            /* Footer adjustments */
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-section {
+                margin-bottom: 20px;
+            }
+
+            /* WhatsApp icon adjustments */
+            .whatsapp-float {
+                bottom: 10px;
+                right: 10px;
+            }
+
+            .whatsapp-icon {
+                width: 50px;
+                height: 50px;
+            }
+
+
+        }
+
+        /* Mobile Menu Styles */
+        #hamburger-icon {
+            margin: auto 0;
+            display: none;
+            cursor: pointer;
+        }
+
+        #hamburger-icon div {
+            width: 35px;
+            height: 3px;
+            background-color: white;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+
+        .open .bar1 {
+            -webkit-transform: rotate(-45deg) translate(-6px, 6px);
+            transform: rotate(-45deg) translate(-6px, 6px);
+        }
+
+        .open .bar2 {
+            opacity: 0;
+        }
+
+        .open .bar3 {
+            -webkit-transform: rotate(45deg) translate(-6px, -8px);
+            transform: rotate(45deg) translate(-6px, -8px);
+        }
+
+        .open .mobile-menu {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: relative;
+            top: 0px;
+            left: 0;
+            height: auto;
+            background-color: hsl(229, 17%, 32%);
+            z-index: 1000;
+            width: 100%;
+        }
+
+        .mobile-menu li {
+            width: 100%;
+            padding: 1% 0;
+            list-style-type: none;
+            list-style-position: inside;
+        }
+
+        .mobile-menu li:hover {
+            background-color: hsl(230, 19%, 58%);
+
+        }
+
+        .mobile-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        .mobile-menu a:hover {
+            color: orange;
+        }
+
+        .mapContainer iframe {
+            height: 400px;
+            width: 500px;
+            margin-left: 3%;
+        }
+
+        @media only screen and (min-width: 300px) and (max-width: 700px) {
+
+                   /* Social Media Icons */
+        .social {
+            gap: 5px;
+        }
+
+        .icon-wrapper {
+            padding: 4px;
+        }
+
+        .icon {
+            font-size: 1rem;
+        }
+        .logo img {
+
+            margin-left: 50%;
+            width: 150%;
+        }
+
+            .nav-links {
+                display: none;
+            }
+
+            .login-btn-wrapper {
+                display: none;
+            }
+
+            #hamburger-icon {
+                display: block;
+            }
+
+            .focus-card {
+                width: 50%;
+            }
+
+            .focus-card:hover img {
+                transform: scale(110%);
+            }
+
+            .contactContainer {
+                align-items: center;
+                align-content: center;
+                justify-content: center;
+            }
+
+            .mapContainer,
+            .mapContainer iframe {
+                height: 400px;
+                width: 90%;
+                margin-left: 3%;
+            }
+
+            .contact-form {
+                width: 80%;
+            }
+
+            .schedule-section {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 50px 20px;
+                background-color: #ffffff;
+                flex-wrap: wrap;
+                /* Ensures responsiveness */
+            }
+
+            .schedule-content {
+                width: 100%;
+
+            }
+
+            .schedule-image {
+                width: 100%;
+                align-self: flex-end;
+            }
+
+            .schedule-image img {
+                width: 100%;
+                display: none;
+
+            }
+
+            .hero-image {
+                width: 70%;
+            }
+
+            .hero-content h2,
+            .schedule-content h2,
+            .footer-section h2 {
+                font-size: 25px;
+            }
+
+            .gallery-container span {
+                width: 200px;
+            }
+
+            .footer-container {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            }
+
+            .footer-container .footer-section {
+                display: none;
+            }
+
+        }
+
+        @media only screen and (min-width: 700px) and (max-width: 900px) {
+            .focus-card {
+                width: 40%;
+                margin: 2% 0;
+            }
+
+            .focus-card:hover img {
+                transform: scale(105%);
+
+            }
+
+            .footer-container {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            }
+
+        }
+
+        @media screen and (min-width: 300px) and (max-width: 500px) {
+
+            .head{
+                height: 50px;
+                display: flex   ;
+                align-items: center;
+                justify-content: center;
+            }
+
+
+            .logo{
+                width: 25%;
+            }
+
+
+            html {
+                width: 100%;
+            }
+
+            /* Header adjustments */
+            header {
+                padding: 5% 2%;
+            }
+
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 10px;
+            }
+
+            .login-btn-wrapper {
+                margin-top: 10px;
+            }
+
+            /* Hero section adjustments */
+            .hero {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .hero-content {
+                max-width: 100%;
+                text-align: center;
+            }
+
+            .hero-image {
+                width: 100%;
+                margin-top: 20px;
+            }
+
+            /* Schedule section adjustments */
+            .schedule-section {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .schedule-content {
+                max-width: 100%;
+                text-align: center;
+            }
+
+            .schedule-image {
+                width: 100%;
+                margin-top: 20px;
+            }
+
+            /* Focus section adjustments */
+            .focus-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .focus-card {
+                width: 80%;
+                margin: 10px 0;
+            }
+
+            /* Gallery adjustments */
+            .gallery-images {
+                width: 100%;
+                padding-left: 0;
+            }
+
+            .gallery-img {
+                width: 45%;
+                margin: 0 5px;
+            }
+
+            /* Contact form adjustments */
+            .contactContainer {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .mapContainer {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+
+            .contact-form {
+                width: 90%;
+            }
+
+            /* Footer adjustments */
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-section {
+                margin-bottom: 20px;
+            }
+
+            /* WhatsApp icon adjustments */
+            .whatsapp-float {
+                bottom: 10px;
+                right: 10px;
+            }
+
+            .whatsapp-icon {
+                width: 50px;
+                height: 50px;
+            }
+
+            .carousel-container {
+            padding: 2% 1%;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .carousel-track {
+            display: flex;
+            animation: scroll 5s linear infinite;
+            padding-top: 10%;
+        }
+
+        .carousel-item {
+            flex: 0 0 auto;
+            width: 30%;
+            margin-right: 20px;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+
+
+        }
+
+        .gallery-title {
+            background-color: #fde5df;
+            color: #e85a3c;
+            padding: 5px 10px;
+            border-radius: 25px;
+            width: 10%;
+            font-size: 25px;
+            margin: 2%;
+            margin-bottom: 3%;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="head">
+        <div class="container">
+            <div class="header-content">
+                <!-- <div class="logo">
+          <div><img src="MoveExpress-Photoroom.png" alt="Logo"
+            style="width: 30px; height: auto;padding-top: 10px;">MoveExpress</div>
+          <span>On-Time-Every-Time</span>
+        </div> -->
+
+                <div class="logo">
+                    <img src="NewMoveExpress-Photoroom.png" alt="Logo">
+                </div>
+
+                <div class="social">
+                    <div class="icon-wrapper">
+                        <i class="fab fa-facebook-f icon"></i>
+                    </div>
+                    <div class="icon-wrapper">
+                        <i class="fab fa-instagram icon"></i>
+                    </div>
+                    <div class="icon-wrapper">
+                        <i class="fab fa-twitter icon"></i>
+                    </div>
+                    <div class="icon-wrapper">
+                        <i class="fab fa-youtube icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- <header>
+
+        <nav class="navbar">
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#schedule">Schedules</a>
+                <a href="#service">Service</a>
+                <a href="#contact-form">Contact</a>
+            </div>
+
+            <div class="login-btn-wrapper">
+                <div><button class="login-btn" onclick="location.href='login.html';">
+                        Login
+                    </button></div>
+            </div>
+
+            <div id="hamburger-icon" onclick="toggleMobileMenu(this)">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+                <ul class="mobile-menu">
+                  <li><a href="/home">Home</a></li>
+                  <li><a href="/products">Products</a></li>
+                  <li><a href="/about">About</a></li>
+                  <li id="login"><a href="/login" >Login</a></li>
+                  <li id="signup"><a href="/signup">Signup</a></li>
+                </ul>
+              </div>
+        </nav>
+    </header> -->
+
+    <header>
+
+        <nav class="navbar">
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#schedule">Schedules</a>
+                <a href="#service">Service</a>
+                <a href="#contact-form">Contact</a>
+            </div>
+            <div class="login-btn-wrapper">
+                <div><button class="login-btn" onclick="location.href='login.html';">Login</button></div>
+            </div>
+            <div id="hamburger-icon" onclick="toggleMobileMenu(this)">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+                <ul class="mobile-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#schedule">Schedules</a></li>
+                    <li><a href="#service">Service</a></li>
+                    <li><a href="#contact-form">Contact</a></li>
+                    <li id="login"><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- <section class="hero" id="home">
+        <div class="hero-content">
+            <span style="background-color: #fde5df; color: #e85a3c; padding: 5px 10px; border-radius: 3px;">Public
+                Transport Information Portal</span>
+            <h2>Your One-Stop Public Transport Info Hub</h2>
+            <p>Discover real-time schedules, routes, and fare details at your fingertips. Plan your travel with ease
+                across buses, trains, and other public transport modes. Whether you’re a daily commuter or an occasional
+                traveler, our portal ensures you have the information you need for a hassle-free journey. Stay updated,
+                save time, and travel smarter!</p>
+
+            <a href="#contact-form" class="cta-button">Make An Enquiry</a>
+        </div>
+        <div class="hero-image">
+            <img src="WB.png" alt="Hydrogen Fuel Cell Bus">
+        </div>
+    </section> -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <span style="background-color: #fde5df; color: #e85a3c; padding: 5px 10px; border-radius: 3px;">
+                Parcel & Cargo Transport Portal
+            </span>
+            <h2>Fast, Reliable, and Secure Logistics Solutions</h2>
+            <p>We specialize in seamless cargo and parcel transportation services across the country. Whether it's
+                lightweight parcels or bulk cargo, our team ensures timely, secure, and efficient delivery. With a
+                commitment to customer satisfaction and a robust logistics network, we are your trusted partner for
+                hassle-free parcel shipping.</p>
+
+            <a href="login.html" class="cta-button">Book Your Shipment Now</a>
+        </div>
+        <div class="hero-image">
+            <img src="WB.png" alt="Parcel and Cargo Transport Services">
+        </div>
+    </section>
+
+    <!-- 
+    <section class="schedule-section" id="schedule">
+        <div class="schedule-image">
+            <img src="2.jpeg" alt="Planning Journey">
+        </div>
+        <div class="schedule-content">
+            <span
+                style="background-color: #fde5df; color: #e85a3c; padding: 5px 10px; border-radius: 3px;">Schedules</span>
+            <h2>Real-Time Schedules: Plan Your Journey</h2>
+            <p>Get up-to-date information on bus, train, and metro schedules tailored to your location. Search for
+                routes by destination, stop names, or transport mode. With an intuitive interface, you can view
+                departure and arrival times, peak-hour updates, and even schedule delays. Never miss a connection with
+                our accurate and reliable timetable data.</p>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-circle"></div>
+                    <span>Bus Schedules</span>
+                </div>
+                <div class="feature">
+                    <div class="feature-circle"></div>
+                    <span>Train Schedules</span>
+                </div>
+                <div class="feature">
+                    <div class="feature-circle"></div>
+                    <span>Live Updates Section</span>
+                </div>
+                <div class="feature">
+                    <div class="feature-circle"></div>
+                    <span>Route Search and Planner</span>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <section class="schedule-section" id="schedule">
+        <div class="schedule-image">
+            <img src="2.jpeg" alt="Parcel Scheduling and Tracking">
+        </div>
+        <div class="schedule-content">
+            <span style="background-color: #fde5df; color: #e85a3c; padding: 5px 10px; border-radius: 3px;">
+                Parcel Scheduling & Tracking
+            </span>
+            <h2>Real-Time Tracking: Plan Your Parcel Dispatch</h2>
+            <p>Stay updated on your parcel's journey with real-time tracking and scheduling services. Schedule
+                dispatches
+                at your convenience and monitor delivery statuses anytime, anywhere. Whether it's a single package or
+                bulk
+                cargo, our platform ensures smooth and transparent parcel management for peace of mind.</p>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-circle"></div>
+                    <span>Schedule Pickup</span>
+                </div>
+                <div class="feature">
+                    <div class="feature-circle"></div>
+                    <span>Real-Time Tracking</span>
+                </div>
+                <div class="feature">
+                    <div class="feature-circle"></div>
+                    <span>Live Status Updates</span>
+                </div>
+                <div class="feature">
+                    <div class="feature-circle"></div>
+                    <span>Route Optimization</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="focus-section" id="service">
+        <span style="background-color: #fde5df; color: #e85a3c; padding: 5px 10px; border-radius: 3px;">
+            Our Services
+        </span>
+        <h2>Our Main Focus</h2>
+        <div class="focus-cards">
+            <div class="focus-card">
+                <img src="31.jpeg" alt="Parcel Delivery Icon">
+                <h3>Reliable Parcel Delivery</h3>
+                <p>We provide fast and secure parcel delivery services across regions, ensuring your packages reach
+                    their
+                    destination on time and in perfect condition.</p>
+            </div>
+            <div class="focus-card">
+                <img src="bulkCargo.png" alt="Cargo Transport Icon">
+                <h3>Bulk Cargo Transportation</h3>
+                <p>Efficient transportation solutions for bulk cargo, including customized logistics support to meet
+                    the diverse needs of businesses and individuals.</p>
+            </div>
+            <div class="focus-card">
+                <img src="warehouse.jpg" alt="Warehousing and Logistics Icon">
+                <h3>Warehousing & Logistics Services</h3>
+                <p>Comprehensive warehousing and logistics solutions designed to manage your inventory efficiently,
+                    ensuring streamlined storage, handling, and distribution of goods.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- <div class="gallery-container">
+        <span style="background-color: #fde5df; color: #e85a3c; padding: 5px 10px; border-radius: 3px; font-size: 25px;">Gallery</span>
+        <div class="gallery-images">
+            <img src="gallery/trans1.jpeg" alt="Image 1" class="gallery-img" />
+            <img src="gallery/trans3.jpg" alt="Image 2" class="gallery-img" />
+            <img src="gallery/trans3.jpg" alt="Image 3" class="gallery-img" />
+            <img src="gallery/trans4.jpg" alt="Image 4" class="gallery-img" />
+        </div>
+        <div class="gallery-button">
+           <a href="gallery.html"> <button class="more-btn">Click For More</button></a>
+        </div>
+    </div> -->
+
+    <div class="gallery-container">
+        <span class="gallery-title">Gallery</span>
+        <div class="slider-wrapper">
+            <button class="arrow left-arrow">&#9664;</button>
+            <div class="gallery-images" id="gallery">
+                <img src="gallery/trans1.jpeg" alt="Image 1" class="gallery-img" />
+                <img src="gallery/trans2.jpg" alt="Image 2" class="gallery-img" />
+                <img src="gallery/trans3.jpg" alt="Image 3" class="gallery-img" />
+                <img src="gallery/trans4.jpg" alt="Image 4" class="gallery-img" />
+                <img src="gallery/trans5.jpeg" alt="Image 5" class="gallery-img" />
+                <img src="gallery/trans6.jpg" alt="Image 6" class="gallery-img" />
+                <img src="gallery/trans7.jpg" alt="Image 7" class="gallery-img" />
+                <img src="gallery/trans8.jpg" alt="Image 8" class="gallery-img" />
+                <img src="gallery/trans9.jpg" alt="Image 9" class="gallery-img" />
+                <img src="gallery/trans10.png" alt="Image 10" class="gallery-img" />
+            </div>
+            <button class="arrow right-arrow">&#9654;</button>
+        </div>
+        <div class="gallery-button">
+            <a href="gallery.html"> <button class="more-btn">Click For More</button></a>
+        </div>
+    </div>
+
+    <div class="contactContainer">
+        <div class="mapContainer" id="map">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3847.5567137536955!2d75.13808217335601!3d15.346307058388797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb8d7684827291b%3A0x2551addbdde9d1c7!2sGangavathi&#39;s%20Silk%20Palace!5e0!3m2!1sen!2sin!4v1738046069098!5m2!1sen!2sin"
+                style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="contact-form" id="contact-form">
+            <h2>Contact Us</h2>
+            <p>We will get back to you asap!</p>
+            <div class="form-group">
+                <input type="text" id="firstName" placeholder="First Name" required>
+                <input type="text" id="lastName" placeholder="Last Name">
+            </div>
+            <input type="email" id="email" class="form-control" placeholder="Email" required>
+            <textarea id="message" class="form-control" placeholder="Message" required></textarea>
+            <button class="submit-button" onclick="handleSubmit()">Send</button>
+            <div class="contact-footer">
+                You may also mail at <span>manjunathkate1234@gmail.com</span>
+            </div>
+        </div>
+
+    </div>
+
+    <section class="our-clients">
+        <span class="gallery-title">Our Clients</span>
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <div class="carousel-item"><img src="clients/agility_logo.svg" alt="Client 1"></div>
+                <div class="carousel-item"><img src="clients/alfa laval.webp" alt="Client 2"></div>
+                <div class="carousel-item"><img src="clients/ashok.png" alt="Client 3"></div>
+                <div class="carousel-item"><img src="clients/Atalogo_big.png" alt="Client 4"></div>
+                <div class="carousel-item"><img src="clients/bajaj.png" alt="Client 5"></div>
+                <div class="carousel-item"><img src="clients/crane.png" alt="Client 6"></div>
+                <div class="carousel-item"><img src="clients/Dhl.png" alt="Client 7"></div>
+                <div class="carousel-item"><img src="clients/DSV.png" alt="Client 8"></div>
+                <div class="carousel-item"><img src="clients/fie.jpg" alt="Client 9"></div>
+                <div class="carousel-item"><img src="clients/Geodis.jpg" alt="Client 10"></div>
+                <div class="carousel-item"><img src="clients/haikoLogistics.png" alt="Client 11"></div>
+                <div class="carousel-item"><img src="clients/KPT.jpg" alt="Client 12"></div>
+                <div class="carousel-item"><img src="clients/mahindra.jpg" alt="Client 13"></div>
+                <div class="carousel-item"><img src="clients/Valvoline.png" alt="Client 14"></div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Public Transport Information Portal</h3>
+                <p>Your trusted source for real-time public transport info. Access schedules, route planners, fare
+                    calculators, and more to plan your journey effortlessly.</p>
+                <p><i class="fa fa-map-marker"></i> Hubli, Karnataka, India</p>
+                <p><i class="fa fa-phone"></i> +91-9731318600</p>
+                <p><i class="fa fa-envelope"></i> manjunathkate1234@gmail.com</p>
+                <!-- <div class="footer-socials">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                    <a href="#"><i class="fa fa-youtube"></i></a>
+                </div> -->
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#home">About Us</a></li>
+                    <li><a href="#gallery">Blog</a></li>
+                    <li><a href="#map">Locations Map</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#contact-form">Contact us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#">Real-Time Schedules</a></li>
+                    <li><a href="#">Route Planner</a></li>
+                    <li><a href="#">Live Transport Tracker</a></li>
+                    <li><a href="#">Service Alerts</a></li>
+                    <li><a href="#">Accessibility Services</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Customer Care</h4>
+                <ul>
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">My Account</a></li>
+                    <li><a href="#">Saved Routes</a></li>
+                    <li><a href="#">Notifications Preferences</a></li>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Live Chat</a></li>
+                    <li><a href="#">Report an Issue</a></li>
+                    <li><a href="#">Feedback</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Public Transport Information Portal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/8073912782?text=Hello!%20I%20would%20like%20to%20inquire%20about%20your%20services."
+        class="whatsapp-float" target="_blank">
+        <img src="WhatsApp.jpeg" alt="WhatsApp" class="whatsapp-icon">
+    </a>
+
+    <!-- Toast Message -->
+    <div id="toastMessage"
+        style="display: none; position: fixed; top: 10px; left: 50%; transform: translateX(-50%); background: linear-gradient(to right, #34D399, #3B82F6); color: white; padding: 10px 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); max-width: 400px; z-index: 9999; text-align: center; align-items: center; justify-content: space-between;">
+        <span id="alertMessage" style="font-weight: bold; font-size: 16px;"></span>
+        <div style="display: flex; align-items: center;">
+            <button onclick="closeToast()"
+                style="margin-right: 8px; background: rgba(255, 255, 255, 0.3); color: white; padding: 5px 10px; border: none; border-radius: 8px; cursor: pointer; font-size: 14px;">
+                Close
+            </button>
+            <span style="margin-left: 5px; font-size: 20px;">✔️</span>
+        </div>
+    </div>
+
+
+    <script>
+
+
+        function toggleMobileMenu(menu) {
+            menu.classList.toggle('open');
+        }
+
+        window.onload = function () {
+            const toast = document.getElementById("toastMessage");
+            toast.style.display = "none"; // Ensure toast stays hidden initially
+        };
+
+        function handleSubmit() {
+            const firstName = document.getElementById("firstName");
+            const lastName = document.getElementById("lastName");
+            const email = document.getElementById("email");
+            const message = document.getElementById("message");
+            let isValid = true;
+
+            // Reset styles before validation
+            [firstName, lastName, email, message].forEach(field => {
+                field.style.border = "1px solid #ccc";
+                field.style.backgroundColor = "white";
+            });
+
+            // Validate First Name
+            if (!firstName.value) {
+                applyErrorStyle(firstName, "First name is required.");
+                isValid = false;
+            }
+
+            // Validate Last Name
+            if (!lastName.value) {
+                applyErrorStyle(lastName, "Last name is required.");
+                isValid = false;
+            }
+
+            // Validate Email
+            if (!email.value || !validateEmail(email.value)) {
+                applyErrorStyle(email, "Valid email is required.");
+                isValid = false;
+            }
+
+            // Validate Message
+            if (!message.value.trim()) {
+                applyErrorStyle(message, "Message cannot be empty.");
+                isValid = false;
+            }
+
+            if (isValid) {
+                showToast(`${firstName.value}, Your Message is successfully Submitted!`);
+            }
+        }
+
+        function applyErrorStyle(element, message) {
+            element.style.border = "2px solid red";
+            element.style.backgroundColor = "#ffe6e6";
+            element.placeholder = message;
+        }
+
+        function validateEmail(email) {
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return regex.test(email);
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById("toastMessage");
+            document.getElementById("alertMessage").innerText = message;
+            toast.style.display = "flex";
+            setTimeout(() => {
+                toast.style.display = "none";
+            }, 4000);
+        }
+
+        function closeToast() {
+            document.getElementById("toastMessage").style.display = "none";
+        }
+
+
+
+
+
+        function isInViewport(element) {
+            const rect = element.getBoundingClientRect();
+            return rect.top <= window.innerHeight && rect.bottom >= 0;
+        }
+        const sections = document.querySelectorAll('section, .contact-form');
+
+        window.addEventListener('scroll', () => {
+            sections.forEach((section) => {
+                if (isInViewport(section)) {
+                    section.classList.add('visible');
+                } else {
+                    section.classList.remove('visible');
+                }
+            });
+        });
+        window.dispatchEvent(new Event('scroll'));
+
+
+        const galleryImages = document.querySelector('.gallery-images');
+        const leftArrow = document.querySelector('.left-arrow');
+        const rightArrow = document.querySelector('.right-arrow');
+        const imageWidth = document.querySelector('.gallery-img').offsetWidth * 5; // Including margin
+
+        let currentOffset = 0;
+
+        rightArrow.addEventListener('click', () => {
+            if (Math.abs(currentOffset) < (galleryImages.scrollWidth - galleryImages.clientWidth)) {
+                currentOffset -= imageWidth;
+                galleryImages.style.transform = `translateX(${currentOffset}px)`;
+            }
+        });
+
+        leftArrow.addEventListener('click', () => {
+            if (currentOffset < 0) {
+                currentOffset += imageWidth;
+                galleryImages.style.transform = `translateX(${currentOffset}px)`;
+            }
+        });
+    </script>
+</body>
+
+</html>
